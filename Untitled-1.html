@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Samia Rahman Mridula </title>
+  <title>Samia Rahman Mridula | Portfolio</title>
 
   <meta
     name="description"
     content="Portfolio of Samia Rahman Mridula, a Computer Science student at BRAC University interested in natural language processing, machine learning, and full-stack development."
   />
+  <meta name="theme-color" content="#a1785c" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,16 +35,9 @@
       --shadow: 0 10px 30px rgba(103, 78, 58, 0.07);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
     body {
       background: var(--bg);
@@ -52,34 +46,34 @@
       line-height: 1.65;
     }
 
-    button,
-    input,
-    textarea {
-      font: inherit;
+    button, input, textarea { font: inherit; }
+
+    a, button {
+      transition: background-color .2s ease, border-color .2s ease,
+                  color .2s ease, transform .2s ease;
     }
 
-    a,
-    button {
-      transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-    }
-
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
       outline: 3px solid rgba(161, 120, 92, 0.28);
       outline-offset: 3px;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin-inline: auto;
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 8px;
+      z-index: 100;
+      padding: 10px 16px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--button-radius);
+      text-decoration: none;
     }
+    .skip-link:focus { left: 8px; }
 
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+    /* ---------- Header ---------- */
     header {
       position: sticky;
       top: 0;
@@ -94,7 +88,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 16px 0;
+      padding: 14px 0;
+      position: relative;
     }
 
     .logo {
@@ -103,28 +98,32 @@
       font-weight: 800;
       text-decoration: none;
     }
+    .logo span { color: var(--primary); }
 
-    .logo span {
-      color: var(--primary);
-    }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
+    .nav-links a:not(.btn) {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .95rem;
       font-weight: 500;
       text-decoration: none;
     }
+    .nav-links a:not(.btn):hover,
+    .nav-links a.active { color: var(--primary-dark); }
 
-    .nav-links a:hover {
-      color: var(--primary-dark);
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--button-radius);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
     }
 
+    /* ---------- Buttons ---------- */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -134,151 +133,77 @@
       border: 1px solid transparent;
       border-radius: var(--button-radius);
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: .95rem;
       font-weight: 600;
       line-height: 1.2;
       text-decoration: none;
     }
+    .btn:hover { transform: translateY(-2px); }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn-primary { background: var(--primary); color: #fff !important; }
+    .btn-primary:hover { background: var(--primary-dark); }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff !important;
-    }
+    .btn-outline { background: #fff; border-color: var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-outline {
-      background: #ffffff;
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-
+    /* ---------- Hero ---------- */
     .hero {
       padding: 100px 0 75px;
       background:
-        radial-gradient(
-          circle at 88% 8%,
-          rgba(161, 120, 92, 0.09),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 8% 85%,
-          rgba(124, 90, 68, 0.06),
-          transparent 30%
-        );
+        radial-gradient(circle at 88% 8%, rgba(161,120,92,.09), transparent 34%),
+        radial-gradient(circle at 8% 85%, rgba(124,90,68,.06), transparent 30%);
     }
-
-    .hero-content {
-      max-width: 820px;
-    }
+    .hero-content { max-width: 820px; }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.4rem, 6vw, 4rem);
+      margin-bottom: 18px;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
       letter-spacing: -0.03em;
-      line-height: 1.08;
+      line-height: 1.1;
     }
+    .highlight { display: block; margin-top: 6px; color: var(--primary); font-size: .62em; letter-spacing: -0.01em; }
 
-    .highlight {
-      color: var(--primary);
-    }
+    .hero p { max-width: 700px; color: var(--muted); font-size: 1.08rem; }
 
-    .hero p {
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
     .hero-tags span {
       padding: 8px 14px;
       background: var(--bg-soft);
       border: 1px solid var(--border);
       border-radius: var(--button-radius);
       color: var(--muted);
-      font-size: 0.87rem;
+      font-size: .87rem;
       font-weight: 500;
     }
 
-    section {
-      padding: 80px 0;
-    }
+    /* ---------- Sections ---------- */
+    section { padding: 80px 0; }
 
-    .section-head {
-      margin-bottom: 40px;
-    }
+    .section-head { margin-bottom: 40px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); letter-spacing: -0.02em; }
+    .section-head p { max-width: 700px; margin-top: 10px; color: var(--muted); }
 
-    .section-head h2 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      letter-spacing: -0.02em;
-    }
-
-    .section-head p {
-      max-width: 700px;
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .about-card,
-    .skill-card,
-    .project,
-    .timeline-item,
-    .contact-box {
+    .about-card, .skill-card, .project, .timeline-item, .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .about-card {
-      padding: 28px;
-    }
-
-    .about-card h3 {
-      margin-bottom: 12px;
-    }
-
-    .about-card p {
-      color: var(--muted);
-    }
-
-    .contact-info {
+    .about-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 20px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: start;
     }
+    .about-card { padding: 28px; }
+    .about-card h3 { margin-bottom: 12px; }
+    .about-card p { color: var(--muted); }
+    .about-card p + p { margin-top: 14px; }
 
+    .contact-info { display: grid; gap: 14px; margin-top: 20px; }
     .contact-info a {
       display: flex;
       align-items: center;
@@ -291,115 +216,57 @@
       overflow-wrap: anywhere;
       text-decoration: none;
     }
+    .contact-info a:hover { border-color: var(--primary); color: var(--primary-dark); }
 
-    .contact-info a:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      padding: 24px;
-    }
-
-    .skill-card h3 {
-      margin-bottom: 14px;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
+    /* ---------- Skills ---------- */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .skill-card { padding: 24px; }
+    .skill-card h3 { margin-bottom: 14px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill {
       padding: 7px 13px;
       background: var(--bg-soft);
       border: 1px solid var(--border);
       border-radius: var(--button-radius);
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: .85rem;
       font-weight: 500;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 22px;
-    }
-
-    .project {
-      display: flex;
-      flex-direction: column;
-      padding: 26px;
-    }
-
-    .project-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
+    /* ---------- Projects ---------- */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 22px; }
+    .project { display: flex; flex-direction: column; padding: 26px; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 
     .project-category {
       padding: 5px 11px;
       background: var(--primary-soft);
       border-radius: var(--button-radius);
       color: var(--primary-dark);
-      font-size: 0.8rem;
+      font-size: .8rem;
       font-weight: 700;
     }
-
-    .featured {
+    .badge {
       padding: 4px 10px;
-      background: #f4ece4;
-      border: 1px solid #e2d2c1;
+      border: 1px solid;
       border-radius: var(--button-radius);
-      color: #7c5a44;
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 700;
     }
+    .badge-featured { background: #f4ece4; border-color: #e2d2c1; color: #7c5a44; }
+    .badge-ongoing  { background: #eef6ee; border-color: #cfe3cf; color: #3f6b3f; }
 
-    .ongoing {
-      padding: 4px 10px;
-      background: #eef6ee;
-      border: 1px solid #cfe3cf;
-      border-radius: var(--button-radius);
-      color: #3f6b3f;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
+    .project h3 { margin-bottom: 8px; font-size: 1.2rem; }
+    .project p { color: var(--muted); font-size: .95rem; }
 
-    .project h3 {
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0;
-    }
-
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
     .project-tags span {
       padding: 5px 11px;
       background: var(--bg-soft);
       border: 1px solid var(--border);
       border-radius: var(--button-radius);
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: .78rem;
       font-weight: 600;
     }
 
@@ -407,245 +274,136 @@
       align-self: flex-start;
       margin-top: auto;
       color: var(--primary-dark);
-      font-size: 0.92rem;
+      font-size: .92rem;
       font-weight: 600;
       text-decoration: none;
     }
+    .project-link:hover { color: var(--primary); }
 
-    .project-link:hover {
-      color: var(--primary);
-    }
+    /* ---------- Timeline ---------- */
+    .timeline-item { margin-bottom: 20px; padding: 24px; border-left: 4px solid var(--primary); }
+    .timeline-item h3 { font-size: 1.1rem; }
+    .timeline-item .meta { display: block; color: var(--muted); font-size: .9rem; }
+    .timeline-item p { margin-top: 8px; color: var(--muted); font-size: .95rem; }
 
-    .timeline-item {
-      margin-bottom: 20px;
-      padding: 24px;
-      border-left: 4px solid var(--primary);
-    }
+    /* ---------- Contact ---------- */
+    .contact-section { background: var(--bg-soft); border-block: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .contact-box { padding: 28px; }
+    .contact-box h3 { margin-bottom: 8px; }
+    .contact-box > p { margin-bottom: 20px; color: var(--muted); }
 
-    .timeline-item h3 {
-      font-size: 1.1rem;
-    }
-
-    .timeline-item span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .timeline-item p {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .contact-section {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .contact-box {
-      padding: 28px;
-    }
-
-    .contact-box h3 {
-      margin-bottom: 8px;
-    }
-
-    .contact-box > p {
-      margin-bottom: 20px;
-      color: var(--muted);
-    }
-
-    .form {
-      display: grid;
-      gap: 14px;
-    }
-
-    .form label {
-      display: inline-block;
-      margin-bottom: 6px;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
-    .form input,
-    .form textarea {
+    .form { display: grid; gap: 14px; }
+    .form label { display: inline-block; margin-bottom: 6px; font-size: .88rem; font-weight: 600; }
+    .form input, .form textarea {
       width: 100%;
       padding: 13px 15px;
-      background: #ffffff;
+      background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--button-radius);
       color: var(--text);
-      font-size: 0.95rem;
-      outline: none;
+      font-size: .95rem;
     }
+    .form input:focus, .form textarea:focus { border-color: var(--primary); outline: none; }
+    .form textarea { min-height: 140px; resize: vertical; }
+    .form .btn { width: fit-content; }
+    .form-note { color: var(--muted); font-size: .85rem; }
 
-    .form input:focus,
-    .form textarea:focus {
-      border-color: var(--primary);
-    }
+    /* ---------- Footer ---------- */
+    footer { padding: 34px 0; color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-inner strong { color: var(--text); }
 
-    .form textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .form .btn {
-      width: fit-content;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-inner strong {
-      color: var(--text);
-    }
-
+    /* ---------- Responsive ---------- */
     @media (max-width: 850px) {
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
       .nav-links {
-        gap: 10px;
-      }
-
-      .nav-links a:not(.btn) {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 14px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0 0 var(--radius) var(--radius);
+        box-shadow: var(--shadow);
       }
+      .nav-links.open { display: flex; }
+      .nav-links a:not(.btn) { padding: 10px 12px; }
 
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 70px 0 55px;
-      }
-
-      section {
-        padding: 60px 0;
-      }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0 55px; }
+      section { padding: 60px 0; }
     }
 
     @media (max-width: 480px) {
-      .container {
-        width: min(100% - 28px, 1120px);
-      }
+      .container { width: calc(100% - 28px); }
+      .hero-actions .btn { width: 100%; }
+      .project-top { align-items: flex-start; flex-direction: column; }
+    }
 
-      .logo {
-        font-size: 1rem;
-      }
-
-      .nav .btn {
-        padding: 10px 14px;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .project-top {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
     <div class="container nav">
-      <a class="logo" href="#home" aria-label="Samia Rahman Mridula home">
-        Samia<span>.</span>
-      </a>
+      <a class="logo" href="#home" aria-label="Samia Rahman Mridula home">Samia<span>.</span></a>
 
-      <nav class="nav-links" aria-label="Main navigation">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >&#9776;</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#skills">Technologies</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Research</a>
         <a href="#contact">Contact</a>
-
-        <!--
-          Put your real PDF CV in the same folder as this HTML file and name it:
-          Samia-Rahman-Mridula-CV.pdf
-        -->
-        <a
-          class="btn btn-primary"
-          href="Samia-Rahman-Mridula-CV.pdf"
-          download="Samia-Rahman-Mridula-CV.pdf"
-        >
-          Download CV
-        </a>
+        <!-- Place Samia-Rahman-Mridula-CV.pdf in the same folder as this file. -->
+        <a class="btn btn-primary" href="Samia-Rahman-Mridula-CV.pdf" download>Download CV</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
+    <!-- ================= HERO ================= -->
     <section class="hero" id="home">
       <div class="container hero-content">
         <h1>
-          Hi, I'm Samia Rahman Mridula<br />
-          <span class="highlight">
-            CS Student, Full-Stack Developer & ML Enthusiast
-          </span>
+          Hi, I'm Samia Rahman Mridula
+          <span class="highlight">Computer Science Student</span>
         </h1>
 
         <p>
-          I am a Computer Science student at BRAC University with a strong
-          interest in Natural Language Processing, Machine Learning, and
-          Software Development. I build full-stack web applications and work on
-          data-driven machine learning projects using Python.
+          I am a Computer Science student at BRAC University with a strong interest in
+          Natural Language Processing, Machine Learning, and Software Development. I build
+          full-stack web applications and work on data-driven machine learning projects
+          using Python.
         </p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Let's Connect</a>
-
-          <!-- Replace YOUR-GITHUB-USERNAME and YOUR-LINKEDIN-USERNAME below. -->
-          <a
-            class="btn btn-outline"
-            href="https://github.com/YOUR-GITHUB-USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-
-          <a
-            class="btn btn-outline"
-            href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            class="btn btn-outline"
-            href="Samia-Rahman-Mridula-CV.pdf"
-            download="Samia-Rahman-Mridula-CV.pdf"
-          >
-            Download CV
-          </a>
+          <!-- TODO: replace YOUR-GITHUB-USERNAME and YOUR-LINKEDIN-USERNAME -->
+          <a class="btn btn-outline" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn btn-outline" href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-outline" href="Samia-Rahman-Mridula-CV.pdf" download>Download CV</a>
         </div>
 
         <div class="hero-tags">
@@ -658,16 +416,14 @@
       </div>
     </section>
 
+    <!-- ================= ABOUT ================= -->
     <section id="about">
       <div class="container">
         <div class="section-head">
           <h2>About Me</h2>
           <p>
-About Me
-
-I am Samia Rahman Mridula, a Computer Science and Engineering student at BRAC University interested in full-stack development, machine learning, and natural language processing (NLP).
-
-I have worked on academic projects involving web development, data science, and NLP. I am looking for professional opportunities to strengthen my skills, apply my knowledge, and gain practical experience.
+            A Computer Science and Engineering student looking to apply what I have learned
+            and grow through real-world experience.
           </p>
         </div>
 
@@ -676,20 +432,15 @@ I have worked on academic projects involving web development, data science, and 
             <h3>Computer Science Student</h3>
 
             <p>
-              I am an undergraduate Computer Science and Engineering student at
-              BRAC University. I enjoy problem-solving, clean coding practices,
-              and continuous learning. My main interests include Natural
-              Language Processing, Machine Learning, and full-stack web
-              development.
+I am an undergraduate Computer Science and Engineering student at BRAC University with interests in Natural Language Processing, Machine Learning, and full-stack web development. I enjoy problem-solving, writing clean code, and continuously improving my technical skills. I am seeking professional opportunities to strengthen my skills and gain practical experience.
             </p>
 
-            <p style="margin-top: 14px">
-              I have experience building academic and personal full-stack
-              projects with modern frontend and backend technologies, as well
-              as Python-based data science tools. I am currently working on
-              NLP research for detecting sexist content in Bangla and Banglish
-              text. I am seeking opportunities to apply my technical knowledge,
-              gain industry experience, and contribute to innovative projects.
+            <p>
+              I have built academic and personal full-stack projects with modern frontend
+              and backend technologies, as well as Python-based data science tools. I am
+              currently working on NLP research for detecting sexist content in Bangla and
+              Banglish text, and I am seeking opportunities to gain industry experience and
+              contribute to innovative projects.
             </p>
           </div>
 
@@ -697,56 +448,28 @@ I have worked on academic projects involving web development, data science, and 
             <h3>Contact Information</h3>
 
             <div class="contact-info">
-              <a href="mailto:mridulasamia4@gmail.com">
-                Email: mridulasamia4@gmail.com
-              </a>
-
-              <a href="tel:+8801747044866">
-                Phone: +880 1747-044866
-              </a>
-
-              <a
-                href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn Profile
-              </a>
-
-              <a
-                href="https://github.com/YOUR-GITHUB-USERNAME"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub Profile
-              </a>
-
-              <a
-                href="Samia-Rahman-Mridula-CV.pdf"
-                download="Samia-Rahman-Mridula-CV.pdf"
-              >
-                Download My CV
-              </a>
+              <a href="mailto:mridulasamia4@gmail.com">Email: mridulasamia4@gmail.com</a>
+              <a href="tel:+8801747044866">Phone: +880 1747-044866</a>
+              <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+              <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+              <a href="Samia-Rahman-Mridula-CV.pdf" download>Download My CV</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ================= SKILLS ================= -->
     <section id="skills">
       <div class="container">
         <div class="section-head">
-          <h2>Technologies & Skills</h2>
-          <p>
-            Here are the technologies and tools I work with. I am always
-            learning and expanding my skill set.
-          </p>
+          <h2>Technologies &amp; Skills</h2>
+          <p>The technologies and tools I work with. I am always learning and expanding my skill set.</p>
         </div>
 
         <div class="skills-grid">
           <div class="skill-card">
             <h3>Programming Languages</h3>
-
             <div class="skill-list">
               <span class="skill">Python</span>
               <span class="skill">JavaScript</span>
@@ -758,7 +481,6 @@ I have worked on academic projects involving web development, data science, and 
 
           <div class="skill-card">
             <h3>Full-Stack Development</h3>
-
             <div class="skill-list">
               <span class="skill">React.js</span>
               <span class="skill">Node.js</span>
@@ -771,7 +493,6 @@ I have worked on academic projects involving web development, data science, and 
 
           <div class="skill-card">
             <h3>Databases</h3>
-
             <div class="skill-list">
               <span class="skill">SQL</span>
               <span class="skill">MySQL</span>
@@ -780,8 +501,7 @@ I have worked on academic projects involving web development, data science, and 
           </div>
 
           <div class="skill-card">
-            <h3>Machine Learning & Data Science</h3>
-
+            <h3>Machine Learning &amp; Data Science</h3>
             <div class="skill-list">
               <span class="skill">Scikit-learn</span>
               <span class="skill">NumPy</span>
@@ -794,8 +514,7 @@ I have worked on academic projects involving web development, data science, and 
           </div>
 
           <div class="skill-card">
-            <h3>Tools & Design</h3>
-
+            <h3>Tools &amp; Design</h3>
             <div class="skill-list">
               <span class="skill">Git</span>
               <span class="skill">GitHub</span>
@@ -805,7 +524,6 @@ I have worked on academic projects involving web development, data science, and 
 
           <div class="skill-card">
             <h3>Currently Learning</h3>
-
             <div class="skill-list">
               <span class="skill">Natural Language Processing</span>
               <span class="skill">Transformer Models</span>
@@ -818,345 +536,209 @@ I have worked on academic projects involving web development, data science, and 
       </div>
     </section>
 
+    <!-- ================= PROJECTS ================= -->
     <section id="projects">
       <div class="container">
         <div class="section-head">
           <h2>My Projects</h2>
-          <p>
-            Here are some projects I have worked on. Each project represents a
-            unique challenge and learning experience.
-          </p>
+          <p>Each project represents a unique challenge and learning experience.</p>
         </div>
 
         <div class="projects-grid">
           <article class="project">
             <div class="project-top">
               <span class="project-category">Full-Stack Application</span>
-              <span class="featured">Featured</span>
+              <span class="badge badge-featured">Featured</span>
             </div>
-
             <h3>Mass Transit Control System</h3>
-
             <p>
-              A full-stack web application for mass transit management. I
-              contributed to frontend and backend development, implemented
-              lost-item management, and added Bangla-English language
-              switching.
+              A full-stack web application for mass transit management. I contributed to
+              frontend and backend development, implemented lost-item management, and added
+              Bangla-English language switching.
             </p>
-
             <div class="project-tags">
-              <span>React.js</span>
-              <span>JavaScript</span>
-              <span>Node.js</span>
-              <span>MongoDB</span>
-              <span>HTML</span>
-              <span>CSS</span>
+              <span>React.js</span><span>JavaScript</span><span>Node.js</span>
+              <span>MongoDB</span><span>HTML</span><span>CSS</span>
             </div>
-
-            <!-- Replace the URL below with this project's GitHub URL. -->
-            <a
-              class="project-link"
-              href="https://github.com/YOUR-GITHUB-USERNAME"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Project &rarr;
-            </a>
+            <!-- TODO: replace with this project's repo URL -->
+            <a class="project-link" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
           </article>
 
           <article class="project">
             <div class="project-top">
               <span class="project-category">Data Science</span>
-              <span class="featured">Featured</span>
+              <span class="badge badge-featured">Featured</span>
             </div>
-
             <h3>Obesity Level Prediction</h3>
-
             <p>
-              A machine-learning project that predicts seven obesity
-              categories from demographic, dietary, and lifestyle data. The
-              Random Forest classifier achieved 90.21% accuracy on the reported
-              scaled test-set evaluation.
+              A machine-learning project that predicts seven obesity categories from
+              demographic, dietary, and lifestyle data. The Random Forest classifier achieved
+              90.21% accuracy on the reported scaled test-set evaluation.
             </p>
-
             <div class="project-tags">
-              <span>Python</span>
-              <span>Scikit-learn</span>
-              <span>Pandas</span>
-              <span>NumPy</span>
-              <span>SMOTE</span>
+              <span>Python</span><span>Scikit-learn</span><span>Pandas</span>
+              <span>NumPy</span><span>SMOTE</span>
             </div>
-
-            <!-- Replace the URL below with this project's GitHub URL. -->
-            <a
-              class="project-link"
-              href="https://github.com/YOUR-GITHUB-USERNAME"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Project &rarr;
-            </a>
+            <!-- TODO: replace with this project's repo URL -->
+            <a class="project-link" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
           </article>
 
           <article class="project">
             <div class="project-top">
               <span class="project-category">Research</span>
-              <span class="featured">Featured</span>
+              <span class="badge badge-featured">Featured</span>
             </div>
-
-            <h3>Online Gaming & Gambling Tendencies</h3>
-
+            <h3>Online Gaming &amp; Gambling Tendencies</h3>
             <p>
-              An HCI research project investigating gambling-like tendencies
-              associated with chance-based reward mechanics in online games
-              among Bangladeshi youth.
+              An HCI research project investigating gambling-like tendencies associated with
+              chance-based reward mechanics in online games among Bangladeshi youth.
             </p>
-
             <div class="project-tags">
-              <span>HCI</span>
-              <span>Mixed Methods</span>
-              <span>User Research</span>
-              <span>Usability Testing</span>
+              <span>HCI</span><span>Mixed Methods</span>
+              <span>User Research</span><span>Usability Testing</span>
             </div>
-
-            <a class="project-link" href="#experience">
-              Read More &rarr;
-            </a>
+            <a class="project-link" href="#experience">Read More &rarr;</a>
           </article>
 
           <article class="project">
             <div class="project-top">
               <span class="project-category">NLP Research</span>
-              <span class="ongoing">Ongoing</span>
+              <span class="badge badge-ongoing">Ongoing</span>
             </div>
-
             <h3>Bangla-Banglish Sexism Detection</h3>
-
             <p>
-              An ongoing NLP course research project investigating whether
-              machine learning and transformer models can detect sexist content
-              in Bangla script, Banglish (Romanized Bangla), and mixed-language
-              social media comments. It also examines whether Romanization
-              reduces model performance.
+              An ongoing NLP course research project investigating whether machine learning
+              and transformer models can detect sexist content in Bangla script, Banglish
+              (Romanized Bangla), and mixed-language social media comments, and whether
+              Romanization reduces model performance.
             </p>
-
             <div class="project-tags">
-              <span>Python</span>
-              <span>NLP</span>
-              <span>BanglaBERT</span>
-              <span>XLM-RoBERTa</span>
-              <span>TF-IDF</span>
-              <span>Logistic Regression</span>
+              <span>Python</span><span>NLP</span><span>BanglaBERT</span>
+              <span>XLM-RoBERTa</span><span>TF-IDF</span><span>Logistic Regression</span>
             </div>
-
-            <!-- Replace #experience with your GitHub repo URL once you have code to share. -->
-            <a class="project-link" href="#experience">
-              Read More &rarr;
-            </a>
+            <a class="project-link" href="#experience">Read More &rarr;</a>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ================= EDUCATION & RESEARCH ================= -->
     <section id="experience">
       <div class="container">
         <div class="section-head">
-          <h2>Education & Research</h2>
-          <p>
-            My academic background, research experience, and technical project
-            work.
-          </p>
+          <h2>Education &amp; Research</h2>
+          <p>My academic background, research experience, and technical project work.</p>
         </div>
 
         <div class="timeline-item">
           <h3>BSc in Computer Science and Engineering</h3>
-          <span>
-            BRAC University - Dhaka, Bangladesh - Undergraduate Student
-          </span>
-
+          <span class="meta">BRAC University &middot; Dhaka, Bangladesh &middot; Undergraduate Student</span>
           <p>
-            Studying computer science with a focus on software development,
-            machine learning, and natural language processing.
+            Studying computer science with a focus on software development, machine
+            learning, and natural language processing.
           </p>
         </div>
 
         <div class="timeline-item">
           <h3>Higher Secondary Certificate</h3>
-          <span>
-            Mohammadpur Preparatory School and College - GPA: 5.00/5.00
-          </span>
+          <span class="meta">Mohammadpur Preparatory School and College &middot; GPA: 5.00/5.00</span>
         </div>
 
         <div class="timeline-item">
           <h3>Secondary School Certificate</h3>
-          <span>
-            Mohammadpur Preparatory School and College - GPA: 5.00/5.00
-          </span>
+          <span class="meta">Mohammadpur Preparatory School and College &middot; GPA: 5.00/5.00</span>
         </div>
 
         <div class="timeline-item">
-          <h3>
-            Ongoing Research: Bangla-Banglish Sexism Detection Using NLP
-          </h3>
-
-          <span>
-            BRAC University - NLP / Machine Learning Course Project - In Progress
-          </span>
-
+          <h3>Ongoing Research: Bangla-Banglish Sexism Detection Using NLP</h3>
+          <span class="meta">BRAC University &middot; NLP / Machine Learning Course Project &middot; In Progress</span>
           <p>
-            Studying sexist and gender-based harassment content in
-            low-resource, code-mixed Bangla and Banglish text. Building a small
-            annotated dataset (500-1000 public comments, labeled Sexist / Not
-            Sexist and by script type: Bangla, Banglish, or Mixed) with
-            duplicate and personal-identifier removal.
+            Studying sexist and gender-based harassment content in low-resource, code-mixed
+            Bangla and Banglish text. Building a small annotated dataset (500&ndash;1000
+            public comments, labeled Sexist / Not Sexist and by script type: Bangla,
+            Banglish, or Mixed) with duplicate and personal-identifier removal.
           </p>
-
           <p>
-            Planned evaluation compares a TF-IDF + Logistic Regression baseline
-            with BanglaBERT and XLM-RoBERTa using accuracy, precision, recall,
-            F1-score, and confusion matrices, with a focus on how script
-            variation affects performance.
+            Planned evaluation compares a TF-IDF + Logistic Regression baseline with
+            BanglaBERT and XLM-RoBERTa using accuracy, precision, recall, F1-score, and
+            confusion matrices, with a focus on how script variation affects performance.
           </p>
         </div>
 
         <div class="timeline-item">
-          <h3>
-            Undergraduate Research: Online Gaming and Gambling Tendencies
-          </h3>
-
-          <span>
-            BRAC University - HCI & Mixed-Methods Research
-          </span>
-
+          <h3>Undergraduate Research: Online Gaming and Gambling Tendencies</h3>
+          <span class="meta">BRAC University &middot; HCI &amp; Mixed-Methods Research</span>
           <p>
-            Investigated gambling-like tendencies linked to chance-based reward
-            mechanics in online games among Bangladeshi youth. Conducted 30
-            semi-structured interviews and analyzed survey responses from 150
-            participants using thematic and statistical analysis.
+            Investigated gambling-like tendencies linked to chance-based reward mechanics in
+            online games among Bangladeshi youth. Conducted 30 semi-structured interviews
+            and analyzed survey responses from 150 participants using thematic and
+            statistical analysis.
           </p>
-
           <p>
-            Designed two responsible-gaming prototypes with
-            spending-management controls and a reward-progress indicator, then
-            evaluated them through usability testing with 10 participants.
+            Designed two responsible-gaming prototypes with spending-management controls and
+            a reward-progress indicator, then evaluated them through usability testing with
+            10 participants.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- ================= CONTACT ================= -->
     <section class="contact-section" id="contact">
       <div class="container">
         <div class="section-head">
           <h2>Get In Touch</h2>
-
           <p>
-            Have a project in mind or just want to connect? I would love to hear
-            from you. Send me a message and I will respond as soon as possible.
+            Have a project in mind or just want to connect? Send me a message and I will
+            respond as soon as possible.
           </p>
         </div>
 
         <div class="contact-grid">
           <div class="contact-box">
             <h3>Let's Connect</h3>
-
             <p>
-              I am always interested in internships, collaborations, and
-              interesting projects. Whether you have a question about my work
-              or want to discuss an opportunity, feel free to reach out.
+              I am always interested in internships, collaborations, and interesting
+              projects. Whether you have a question about my work or want to discuss an
+              opportunity, feel free to reach out.
             </p>
 
             <div class="contact-info">
-              <a href="mailto:mridulasamia4@gmail.com">
-                Email: mridulasamia4@gmail.com
-              </a>
-
-              <a href="tel:+8801747044866">
-                Phone: +880 1747-044866
-              </a>
-
-              <a
-                href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-
-              <a
-                href="https://github.com/YOUR-GITHUB-USERNAME"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-
-              <a
-                href="Samia-Rahman-Mridula-CV.pdf"
-                download="Samia-Rahman-Mridula-CV.pdf"
-              >
-                Download CV
-              </a>
+              <a href="mailto:mridulasamia4@gmail.com">Email: mridulasamia4@gmail.com</a>
+              <a href="tel:+8801747044866">Phone: +880 1747-044866</a>
+              <a href="https://linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="Samia-Rahman-Mridula-CV.pdf" download>Download CV</a>
             </div>
           </div>
 
           <div class="contact-box">
             <h3>Send a Message</h3>
-            <p>I will get back to you as soon as possible.</p>
+            <p>This opens your email app with the message pre-filled.</p>
 
-            <form
-              class="form"
-              action="mailto:mridulasamia4@gmail.com"
-              method="post"
-              enctype="text/plain"
-            >
+            <form class="form" id="contactForm" novalidate>
               <div>
                 <label for="name">Name *</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Your name"
-                  autocomplete="name"
-                  required
-                />
+                <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
               </div>
 
               <div>
                 <label for="email">Email *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Your email"
-                  autocomplete="email"
-                  required
-                />
+                <input id="email" name="email" type="email" placeholder="Your email" autocomplete="email" required />
               </div>
 
               <div>
                 <label for="subject">Subject *</label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  placeholder="Subject"
-                  required
-                />
+                <input id="subject" name="subject" type="text" placeholder="Subject" required />
               </div>
 
               <div>
                 <label for="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Your message"
-                  required
-                ></textarea>
+                <textarea id="message" name="message" placeholder="Your message" required></textarea>
               </div>
 
-              <button class="btn btn-primary" type="submit">
-                Send Message
-              </button>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -1168,15 +750,78 @@ I have worked on academic projects involving web development, data science, and 
     <div class="container footer-inner">
       <div>
         <strong>Samia Rahman Mridula</strong>
-
         <p>
-          Computer Science student passionate about full-stack development,
-          machine learning, and building innovative solutions.
+          Computer Science student passionate about full-stack development, machine
+          learning, and building innovative solutions.
         </p>
+        <p>&copy; <span id="year"></span> Samia Rahman Mridula</p>
       </div>
-
       <a class="btn btn-outline" href="#home">Back to Top</a>
     </div>
   </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const toggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function setMenu(open) {
+      navLinks.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.innerHTML = open ? "&times;" : "&#9776;";
+    }
+
+    toggle.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
+    navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
+    // Highlight the current section in the nav
+    const links = [...navLinks.querySelectorAll('a[href^="#"]:not(.btn)')];
+    const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              links.forEach((a) =>
+                a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id)
+              );
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      sections.forEach((s) => observer.observe(s));
+    }
+
+    // Contact form: build a mailto link (works reliably, unlike form action="mailto:")
+    const form = document.getElementById("contactForm");
+    const note = document.getElementById("formNote");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        note.textContent = "Please fill in all fields with a valid email address.";
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const body =
+        `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`;
+
+      window.location.href =
+        "mailto:mridulasamia4@gmail.com" +
+        "?subject=" + encodeURIComponent(data.get("subject")) +
+        "&body=" + encodeURIComponent(body);
+
+      note.textContent = "Opening your email app...";
+    });
+  </script>
 </body>
 </html>
