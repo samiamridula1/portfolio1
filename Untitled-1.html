@@ -8,8 +8,7 @@
 
   <meta
     name="description"
-    content="Portfolio of Samia Rahman Mridula, a Computer Science student at BRAC University interested in natural language processing, machine learning, and full-stack development."
-  />
+    content="Portfolio of Samia Rahman Mridula, a Computer Science student at BRAC University"
   <meta name="theme-color" content="#a1785c" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -391,13 +390,6 @@
           <span class="highlight">Computer Science Student</span>
         </h1>
 
-        <p>
-          I am a Computer Science student at BRAC University with a strong interest in
-          Natural Language Processing, Machine Learning, and Software Development. I build
-          full-stack web applications and work on data-driven machine learning projects
-          using Python.
-        </p>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Let's Connect</a>
           <!-- TODO: replace YOUR-GITHUB-USERNAME and YOUR-LINKEDIN-USERNAME -->
@@ -438,9 +430,9 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
             <p>
               I have built academic and personal full-stack projects with modern frontend
               and backend technologies, as well as Python-based data science tools. I am
-              currently working on NLP research for detecting sexist content in Bangla and
+              currently working on NLP research for detecting content in Bangla and
               Banglish text, and I am seeking opportunities to gain industry experience and
-              contribute to innovative projects.
+              apply my technical skills to real-world challenges.
             </p>
           </div>
 
@@ -528,8 +520,6 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
               <span class="skill">Natural Language Processing</span>
               <span class="skill">Transformer Models</span>
               <span class="skill">Deep Learning</span>
-              <span class="skill">Cloud Deployment</span>
-              <span class="skill">Advanced Backend Development</span>
             </div>
           </div>
         </div>
@@ -597,30 +587,110 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
               <span>HCI</span><span>Mixed Methods</span>
               <span>User Research</span><span>Usability Testing</span>
             </div>
-            <a class="project-link" href="#experience">Read More &rarr;</a>
+            <a class="project-link" href="#experience">View documentation&rarr;</a>
           </article>
 
           <article class="project">
-            <div class="project-top">
-              <span class="project-category">NLP Research</span>
-              <span class="badge badge-ongoing">Ongoing</span>
-            </div>
-            <h3>Bangla-Banglish Sexism Detection</h3>
-            <p>
-              An ongoing NLP course research project investigating whether machine learning
-              and transformer models can detect sexist content in Bangla script, Banglish
-              (Romanized Bangla), and mixed-language social media comments, and whether
-              Romanization reduces model performance.
-            </p>
-            <div class="project-tags">
-              <span>Python</span><span>NLP</span><span>BanglaBERT</span>
-              <span>XLM-RoBERTa</span><span>TF-IDF</span><span>Logistic Regression</span>
-            </div>
-            <a class="project-link" href="#experience">Read More &rarr;</a>
+            
+<div class="timeline-item" id="research-bangla-misogyny">
+  <h3>
+    How Reliable Are Bangla Misogyny Detectors?
+    A Behavioral Test Suite in Bangla and Banglish
+  </h3>
+
+  <span class="meta">
+    BRAC University &middot; NLP and Machine Learning Research
+    &middot; Ongoing
+  </span>
+
+  <p>
+    <strong>Research objective:</strong>
+    To develop a functional test suite for evaluating the
+    reliability, robustness, and generalization of Bangla
+    misogyny detection models beyond conventional held-out
+    evaluation metrics.
+  </p>
+
+  <p>
+    <strong>Research questions:</strong>
+    The study investigates whether standard test scores
+    overestimate real-world reliability, which linguistic
+    phenomena expose model weaknesses, whether Banglish
+    reduces performance relative to Bangla script, and
+    how well models generalize across datasets.
+  </p>
+
+  <p>
+    <strong>Dataset and test suite:</strong>
+    OMANISHA is the proposed primary dataset, with misogyny-
+    related categories mapped to a documented binary
+    classification scheme. Cross-dataset evaluation using
+    suitable public Bangla data, such as ComMA, is planned
+    subject to licensing, availability, and label compatibility.
+    The proposed functional test suite will contain 10–12
+    linguistic functionalities and 150–300 minimal pairs,
+    with parallel Bangla and Banglish versions.
+  </p>
+
+  <p>
+    <strong>Models and methodology:</strong>
+    A TF-IDF character and word n-gram baseline with
+    Logistic Regression will be compared with BanglaBERT,
+    XLM-RoBERTa, and MuRIL.
+  </p>
+
+  <p>
+    <strong>Evaluation:</strong>
+    Accuracy, precision, recall, macro-F1, confusion matrices,
+    minimal-pair consistency, Bangla–Banglish performance
+    gaps, and cross-dataset  will be
+    examined.
+  </p>
+
+  <p>
+    <strong>Expected contribution:</strong>
+    A bilingual-script behavioral test suite, an analysis of
+    model failure modes and dataset shortcuts in
+    low-resource and code-mixed language settings.
+  </p>
+
+  <p>
+    <strong>Data and resources:</strong>
+  </p>
+
+  <div class="project-tags">
+    <span>Functional Testing</span>
+    <span>Model Robustness</span>
+    <span>Cross-Dataset Evaluation</span>
+    <span>Responsible NLP</span>
+  </div>
+
+  <p style="margin-top: 14px;">
+    <a
+      class="project-link"
+      href="https://github.com/Shazzad-Hossen/OMANISHA-Bengali-Misogynistic-Text"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      OMANISHA Dataset &rarr;
+    </a>
+  </p>
+
+  <p style="margin-top: 10px;">
+    <a
+      class="project-link"
+      href="https://lists-archive.okfn.org/pipermail/open-linguistics/2020-January/003224.html"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ComMA / TRAC-2 Resource Reference &rarr;
+    </a>
+  </p>
+</div>
+
           </article>
         </div>
       </div>
-    </section>
 
     <!-- ================= EDUCATION & RESEARCH ================= -->
     <section id="experience">
@@ -650,18 +720,26 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
         </div>
 
         <div class="timeline-item">
-          <h3>Ongoing Research: Bangla-Banglish Sexism Detection Using NLP</h3>
+          <h3>How Reliable Are Bangla Misogyny Detectors? A Behavioral Test Suite in Bangla and Banglish</h3>
           <span class="meta">BRAC University &middot; NLP / Machine Learning Course Project &middot; In Progress</span>
           <p>
-            Studying sexist and gender-based harassment content in low-resource, code-mixed
-            Bangla and Banglish text. Building a small annotated dataset (500&ndash;1000
-            public comments, labeled Sexist / Not Sexist and by script type: Bangla,
-            Banglish, or Mixed) with duplicate and personal-identifier removal.
+           Online misogyny is common on Bangla social media, 
+           and several Bangla datasets now exist, such as OMANISHA, 
+           with 7,017 annotated Bengali text samples collected from Facebook,
+            YouTube, TikTok, Instagram, Twitter and news portals. Most detectors
+             are judged only by accuracy or F1 on a held-out split. Held-out 
+             scores can overestimate real performance because datasets contain 
+             biases and shortcuts, such as relying on slur keywords instead of meaning.
+
           </p>
           <p>
-            Planned evaluation compares a TF-IDF + Logistic Regression baseline with
-            BanglaBERT and XLM-RoBERTa using accuracy, precision, recall, F1-score, and
-            confusion matrices, with a focus on how script variation affects performance.
+           Baseline
+                  TF-IDF (character and word n-grams) + Logistic Regression.
+                 Transformer Models
+                  BanglaBERT
+                 XLM-RoBERTa
+                   MuRIL (optionally BanglishBERT)
+
           </p>
         </div>
 
@@ -698,9 +776,6 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
           <div class="contact-box">
             <h3>Let's Connect</h3>
             <p>
-              I am always interested in internships, collaborations, and interesting
-              projects. Whether you have a question about my work or want to discuss an
-              opportunity, feel free to reach out.
             </p>
 
             <div class="contact-info">
@@ -751,8 +826,6 @@ I am an undergraduate Computer Science and Engineering student at BRAC Universit
       <div>
         <strong>Samia Rahman Mridula</strong>
         <p>
-          Computer Science student passionate about full-stack development, machine
-          learning, and building innovative solutions.
         </p>
         <p>&copy; <span id="year"></span> Samia Rahman Mridula</p>
       </div>
